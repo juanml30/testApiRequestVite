@@ -1,5 +1,10 @@
+// vendors
 import { useEffect, useState } from "react";
+
+// api
 import { getWikipedia } from "../api/wikipedia";
+
+// types
 import { CardParams } from "../types";
 
 export const Card = ({ holiday }: CardParams) => {
@@ -7,13 +12,11 @@ export const Card = ({ holiday }: CardParams) => {
   useEffect(() => {
     const fetchWikipedia = async () => {
       const wikipedia = await getWikipedia({ search: holiday.nombre });
-      console.log(wikipedia, "wikicard", holiday.nombre);
       setWikipedia(wikipedia);
     };
     fetchWikipedia();
   }, [holiday.nombre]);
 
-  console.log(wikipedia, "wikipedia", holiday.nombre);
   return (
     <div
       style={{
